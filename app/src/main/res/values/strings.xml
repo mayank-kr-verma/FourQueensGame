@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Four Queen Game</string>
+    <string name="app_name">The Queen Game</string>
+    <string name="queenShape">♛</string>
+    <string name="space"> </string>
 </resources>
