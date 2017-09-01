@@ -8,40 +8,18 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    Button btn00;
-    Button btn01;
-    Button btn02;
-    Button btn03;
-    Button btn04;
-
-    Button btn10;
-    Button btn11;
-    Button btn12;
-    Button btn13;
-    Button btn14;
-
-    Button btn20;
-    Button btn21;
-    Button btn22;
-    Button btn23;
-    Button btn24;
-
-    Button btn30;
-    Button btn31;
-    Button btn32;
-    Button btn33;
-    Button btn34;
-
-    Button btn40;
-    Button btn41;
-    Button btn42;
-    Button btn43;
-    Button btn44;
+    Button[][] btn = new Button[5][5];
+    final int [][] buttonId = new int[][] {
+            {R.id.button00, R.id.button01, R.id.button02, R.id.button03, R.id.button04,},
+            {R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14,},
+            {R.id.button20, R.id.button21, R.id.button22, R.id.button23, R.id.button24,},
+            {R.id.button30, R.id.button31, R.id.button32, R.id.button33, R.id.button34,},
+            {R.id.button40, R.id.button41, R.id.button42, R.id.button43, R.id.button44,},
+    };
 
     String txt;
 
-    Button submitButton;
+    Button submitButton, clearButton;
 
     int arr[] = new int[25];
     int top = -1;
@@ -51,67 +29,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn00 = (Button) findViewById(R.id.button00);
-        btn01 = (Button) findViewById(R.id.button01);
-        btn02 = (Button) findViewById(R.id.button02);
-        btn03 = (Button) findViewById(R.id.button03);
-        btn04 = (Button) findViewById(R.id.button04);
 
-        btn10 = (Button) findViewById(R.id.button10);
-        btn11 = (Button) findViewById(R.id.button11);
-        btn12 = (Button) findViewById(R.id.button12);
-        btn13 = (Button) findViewById(R.id.button13);
-        btn14 = (Button) findViewById(R.id.button14);
 
-        btn20 = (Button) findViewById(R.id.button20);
-        btn21 = (Button) findViewById(R.id.button21);
-        btn22 = (Button) findViewById(R.id.button22);
-        btn23 = (Button) findViewById(R.id.button23);
-        btn24 = (Button) findViewById(R.id.button24);
 
-        btn30 = (Button) findViewById(R.id.button30);
-        btn31 = (Button) findViewById(R.id.button31);
-        btn32 = (Button) findViewById(R.id.button32);
-        btn33 = (Button) findViewById(R.id.button33);
-        btn34 = (Button) findViewById(R.id.button34);
-
-        btn40 = (Button) findViewById(R.id.button40);
-        btn41 = (Button) findViewById(R.id.button41);
-        btn42 = (Button) findViewById(R.id.button42);
-        btn43 = (Button) findViewById(R.id.button43);
-        btn44 = (Button) findViewById(R.id.button44);
+        for(int i = 0; i < 5; i++)
+            for(int j = 0; j < 5; j++)
+            {
+                btn[i][j]= (Button) findViewById(buttonId[i][j]);
+                btn[i][j].setOnClickListener(this);
+            }
 
         submitButton = (Button) findViewById(R.id.submitbutton);
 
-        btn00.setOnClickListener(this);
-        btn01.setOnClickListener(this);
-        btn02.setOnClickListener(this);
-        btn03.setOnClickListener(this);
-        btn04.setOnClickListener(this);
+        clearButton = (Button) findViewById(R.id.clearButton);
 
-        btn10.setOnClickListener(this);
-        btn11.setOnClickListener(this);
-        btn12.setOnClickListener(this);
-        btn13.setOnClickListener(this);
-        btn14.setOnClickListener(this);
-
-        btn20.setOnClickListener(this);
-        btn21.setOnClickListener(this);
-        btn22.setOnClickListener(this);
-        btn23.setOnClickListener(this);
-        btn24.setOnClickListener(this);
-
-        btn30.setOnClickListener(this);
-        btn31.setOnClickListener(this);
-        btn32.setOnClickListener(this);
-        btn33.setOnClickListener(this);
-        btn34.setOnClickListener(this);
-
-        btn40.setOnClickListener(this);
-        btn41.setOnClickListener(this);
-        btn42.setOnClickListener(this);
-        btn43.setOnClickListener(this);
-        btn44.setOnClickListener(this);
+        clearButton.setOnClickListener(this);
 
         submitButton.setOnClickListener(this);
 
@@ -122,252 +54,252 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
 
             case (R.id.button00):
-                txt = btn00.getText().toString();
+                txt = btn[0][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn00.setText(getString(R.string.queenShape));
+                    btn[0][0].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn00.setText(getString(R.string.space));
+                    btn[0][0].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button01):
-                txt = btn01.getText().toString();
+                txt = btn[0][1].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn01.setText(getString(R.string.queenShape));
+                    btn[0][1].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn01.setText(getString(R.string.space));
+                    btn[0][1].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button02):
-                txt = btn02.getText().toString();
+                txt = btn[0][2].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn02.setText(getString(R.string.queenShape));
+                    btn[0][2].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn02.setText(getString(R.string.space));
+                    btn[0][2].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button03):
-                txt = btn03.getText().toString();
+                txt = btn[0][3].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn03.setText(getString(R.string.queenShape));
+                    btn[0][3].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn03.setText(getString(R.string.space));
+                    btn[0][3].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button04):
-                txt = btn04.getText().toString();
+                txt = btn[0][4].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn04.setText(getString(R.string.queenShape));
+                    btn[0][4].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn04.setText(getString(R.string.space));
+                    btn[0][4].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button10):
-                txt = btn10.getText().toString();
+                txt = btn[1][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn10.setText(getString(R.string.queenShape));
+                    btn[1][0].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn10.setText(getString(R.string.space));
+                    btn[1][0].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button11):
-                txt = btn11.getText().toString();
+                txt = btn[1][1].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn11.setText(getString(R.string.queenShape));
+                    btn[1][1].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn11.setText(getString(R.string.space));
+                    btn[1][1].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button12):
-                txt = btn12.getText().toString();
+                txt = btn[1][2].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn12.setText(getString(R.string.queenShape));
+                    btn[1][2].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn12.setText(getString(R.string.space));
+                    btn[1][2].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button13):
-                txt = btn13.getText().toString();
+                txt = btn[1][3].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn13.setText(getString(R.string.queenShape));
+                    btn[1][3].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn13.setText(getString(R.string.space));
+                    btn[1][3].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button14):
-                txt = btn14.getText().toString();
+                txt = btn[1][4].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn14.setText(getString(R.string.queenShape));
+                    btn[1][4].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn14.setText(getString(R.string.space));
+                    btn[1][4].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button20):
-                txt = btn20.getText().toString();
+                txt = btn[2][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn20.setText(getString(R.string.queenShape));
+                    btn[2][0].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn20.setText(getString(R.string.space));
+                    btn[2][0].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button21):
-                txt = btn21.getText().toString();
+                txt = btn[2][1].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn21.setText(getString(R.string.queenShape));
+                    btn[2][1].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn21.setText(getString(R.string.space));
+                    btn[2][1].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button22):
-                txt = btn22.getText().toString();
+                txt = btn[2][2].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn22.setText(getString(R.string.queenShape));
+                    btn[2][2].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn22.setText(getString(R.string.space));
+                    btn[2][2].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button23):
-                txt = btn23.getText().toString();
+                txt = btn[2][3].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn23.setText(getString(R.string.queenShape));
+                    btn[2][3].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn23.setText(getString(R.string.space));
+                    btn[2][3].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button24):
-                txt = btn24.getText().toString();
+                txt = btn[2][4].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn24.setText(getString(R.string.queenShape));
+                    btn[2][4].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn24.setText(getString(R.string.space));
+                    btn[2][4].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button30):
-                txt = btn30.getText().toString();
+                txt = btn[3][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn30.setText(getString(R.string.queenShape));
+                    btn[3][0].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn30.setText(getString(R.string.space));
+                    btn[3][0].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button31):
-                txt = btn31.getText().toString();
+                txt = btn[3][1].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn31.setText(getString(R.string.queenShape));
+                    btn[3][1].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn31.setText(getString(R.string.space));
+                    btn[3][1].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button32):
-                txt = btn32.getText().toString();
+                txt = btn[3][2].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn32.setText(getString(R.string.queenShape));
+                    btn[3][2].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn32.setText(getString(R.string.space));
+                    btn[3][2].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button33):
-                txt = btn33.getText().toString();
+                txt = btn[3][3].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn33.setText(getString(R.string.queenShape));
+                    btn[3][3].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn33.setText(getString(R.string.space));
+                    btn[3][3].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button34):
-                txt = btn34.getText().toString();
+                txt = btn[3][4].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn34.setText(getString(R.string.queenShape));
+                    btn[3][4].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn34.setText(getString(R.string.space));
+                    btn[3][4].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button40):
-                txt = btn40.getText().toString();
+                txt = btn[4][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn40.setText(getString(R.string.queenShape));
+                    btn[4][0].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn40.setText(getString(R.string.space));
+                    btn[4][0].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button41):
-                txt = btn41.getText().toString();
+                txt = btn[4][1].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn41.setText(getString(R.string.queenShape));
+                    btn[4][1].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn41.setText(getString(R.string.space));
+                    btn[4][1].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button42):
-                txt = btn42.getText().toString();
+                txt = btn[4][2].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn42.setText(getString(R.string.queenShape));
+                    btn[4][2].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn42.setText(getString(R.string.space));
+                    btn[4][2].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button43):
-                txt = btn43.getText().toString();
+                txt = btn[4][3].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn43.setText(getString(R.string.queenShape));
+                    btn[4][3].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn43.setText(getString(R.string.space));
+                    btn[4][3].setText(getString(R.string.space));
                 }
                 break;
 
             case (R.id.button44):
-                txt = btn44.getText().toString();
+                txt = btn[4][4].getText().toString();
                 if(txt.equals(getString(R.string.space))){
-                    btn44.setText(getString(R.string.queenShape));
+                    btn[4][4].setText(getString(R.string.queenShape));
                 }
                 else{
-                    btn44.setText(getString(R.string.space));
+                    btn[4][4].setText(getString(R.string.space));
                 }
                 break;
 
@@ -381,6 +313,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "you fail!", Toast.LENGTH_SHORT).show();
                     break;
                 }
+
+            case (R.id.clearButton):
+                for( int i = 0; i < 5; i++)
+                    for( int j = 0; j < 5; j++){
+                        btn[i][j].setText(getString(R.string.space));
+                    }
+                break;
+
         }
 
     }
