@@ -2,6 +2,7 @@ package makx.fourqueengame;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,9 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button submitButton, clearButton;
 
-    int arr[] = new int[25];
-    int top = -1;
-    Boolean result = true;
+    int stack[] = new int[25];
+    int sTop = -1;
+    int result ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
 
-            case (R.id.button00):
+            /*case (R.id.button00):
                 txt = btn[0][0].getText().toString();
                 if(txt.equals(getString(R.string.space))){
                     btn[0][0].setText(getString(R.string.queenShape));
@@ -301,16 +302,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                     btn[4][4].setText(getString(R.string.space));
                 }
-                break;
+                break;*/
 
             case (R.id.submitbutton):
-                checkResult();
-                if (result) {
-                    Toast.makeText(this, "you pass!", Toast.LENGTH_SHORT).show();
+                result = checkResult();
+                if (result == -1) {
+                    Toast.makeText(this, "you fail!", Toast.LENGTH_SHORT).show();
                     break;
                 }
                 else{
-                    Toast.makeText(this, "you fail!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "you pass!", Toast.LENGTH_SHORT).show();
                     break;
                 }
 
@@ -319,16 +320,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     for( int j = 0; j < 5; j++){
                         btn[i][j].setText(getString(R.string.space));
                     }
+                sTop = -1;
                 break;
+
+            default:
+                for( int i = 0; i < 5; i++)
+                    for( int j = 0; j < 5; j++){
+                        if (view.getId() == buttonId[i][j]){
+                            txt = btn[i][j].getText().toString();
+                            if(txt.equals(getString(R.string.space))){
+                                btn[i][j].setText(getString(R.string.queenShape));
+                            }
+                            else{
+                                btn[i][j].setText(getString(R.string.space));
+                            }
+                            break;
+                        }
+                    }
 
         }
 
     }
 
-    private void checkResult() {
+    private int checkResult() {
+        sTop = -1;
+        for( int i = 0; i < 5; i++)
+            for( int j = 0; j < 5; j++){
+                if (btn[i][j].getText().toString().equals(getString(R.string.queenShape))){
+                    sTop++;
+                    stack[sTop] = j;
+                }
+            }
+        if (sTop != 4){
+            Log.i("fail","sTop!=4");
+            return -1;
+        }
+
+        for ( int i = 1; i <= sTop; i++ ) {
+            for (int j = 0; j < i; j++) {
+                if (stack[i] == stack[j]) {
+                    Log.i("fail","stack["+i+"] == stack["+j+"]");
+                    return -1;
+                }
+            }
+        }
+        for (int i = 1; i <= sTop; i++){
+            for (int j = 0; j < i; j++){
+                if ( (stack[i] - i) == (stack[j] - j) ){
+                    Log.i("fail","(stack["+i+"]"+stack[i]+" - "+i+") == (stack["+j+"]"+stack[j]+" - "+j+")");
+                    return -1;
+                }
+            }
+        }
+        for (int i = 1; i <= sTop; i++){
+            for (int j = 0; j < i; j++){
+                if ( ((stack[i] + i) == (stack[j] + j)) ){
+                    Log.i("fail","(stack["+i+"]"+stack[i]+" + "+i+") == (stack["+j+"]"+stack[j]+" + "+j+")");
+                    return -1;
+                }
+            }
+        }
 
 
+        return 1;
     }
-
-
 }
+
+
+
