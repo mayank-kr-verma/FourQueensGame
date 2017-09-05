@@ -1,8 +1,8 @@
-# FourQueensGame
+# TQG-differentGamemodes
 
-A simple game implemented in Android. Just a skeleton as of now. Lots of work to do
+Only 5x5 working as of now.
 
 ### Todos
 
- - Add Submit Mechanism
- - Add Multiple Board Sizes (5x5, 6x6, etc)
+ -[ ] Add More Gamemodes
+ -[ ] Find Another Way To Link Different Activities
