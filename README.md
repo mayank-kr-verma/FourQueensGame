@@ -1,8 +1,8 @@
-# FourQueensGame
+# TheQueensGame
 
-A simple game implemented in Android. Just a skeleton as of now. Lots of work to do
+A simple game implemented in Android.
 
 ### Todos
 
- - Add Submit Mechanism
- - Add Multiple Board Sizes (5x5, 6x6, etc)
+ [x] Add Submit Mechanism
+ [ ] Add Multiple Board Size Option (4x4, 5x5, 6x6)
